@@ -1,0 +1,36 @@
+{% extends 'cmsapp/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto bg-light">
+             <h1>Contact Us</h1>
+            <form method="post" action="">
+                {% csrf_token %}
+                <div class="m-3">
+                    <label for="name" class="form-label">Your Name:</label>
+                    <input type="Text" class="form-control" id="name" r placeholder="Your Name.." required name="name">
+                </div>
+                <div class="m-3">
+                    <label for="email" class="form-label">Email address:</label>
+                    <input type="email" class="form-control" id="email" placeholder="name@example.com" required
+                        name="email">
+                </div>
+                <div class="m-3">
+                    <label for="number" class="form-label">Mobile No.:</label>
+                    <input type="number" class="form-control" id="number" placeholder="+91-0123456789" required
+                        name="number">
+                </div>
+                <div class="m-3">
+                    <label for="subject" class="form-label">Your Query here...</label>
+                    <textarea class="form-control" id="subject" rows="9" required name="subject"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

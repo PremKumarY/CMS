@@ -1,0 +1,153 @@
+{% extends 'cmsapp/base.html' %}
+{% block content %}
+{% load static %}
+<!-- Page content  -->
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- post content -->
+            <article>
+                <!-- post header -->
+                <header class="mb-4">
+                    <!-- post title -->
+                    <h1 class="fw-bolder mb-1">{{post.title}}</h1>
+                    <!-- Post categories -->
+                    <a href="{% url 'profile' post.writer.profile_id %}" style="text-decoration: none">
+                        <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+                            <div class="d-flex align-items-end justify-content-between">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle me-3" src="{{post.writer.picture.url}}" alt="..."
+                                        style="width: 10%; height:10%;">
+                                    <div class="big">
+                                        <div class="fw-bold">{{post.writer.name}}</div>
+                                        <div class="text-muted">{{post.created}} &middot;</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    {% comment %} {% endcomment %}
+                    <a href="#!" class="badge bg-secondary text-decoration-none link-light">{{post.category}}</a>
+                    {% comment %} <a href='{% url "update" post.slug %}'>
+                        <button class="btn btn-primary">Update</button>
+                    </a>
+                    <a href='{% url "delete" post.slug %}'>
+                        <button class="btn btn-danger">Delete</button>
+                    </a> {% endcomment %}
+                </header>
+                <!-- Preview image figure -->
+                <figure class="mb-4"><img src="{{post.image.url}}" alt="" class="img-fluid rounded"></figure>
+                <!-- post content -->
+                <section class="mb-4">
+                    <p class="fs-5 mb-4">{{post.body|safe}}</p>
+
+                </section>
+            </article>
+            <!-- Comment section -->
+            <section class="mb-5">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <!-- comment from -->
+                        <form action="" class="mb-4"><textarea class="form-control" name="" id="" cols="30" rows="3"
+                                placeholder="Join the disscussion"></textarea></form>
+                        <!-- comment with nested comment -->
+                        <div class="d-flex mb-4">
+                            <!-- parent comment -->
+                            <div class="flex-shrink-0"><img src="" alt="" class="rounded-circle"></div>
+                            <div class="ms-3">
+                                <div class="fw-bold">Commenter name</div>
+                                If you gping to lead the space frontair ,it has to be goverment
+                                <!-- Child 1 comment -->
+                                <div class="d-flex mt-4">
+                                    <div class="flex-shrink-0"><img src="" alt="" class="rounded-circle"></div>
+                                    <div class="ms-3">
+                                        <div class="fw-bold">Commenter name</div>
+                                        If you gping to lead the space frontair ,it has to be goverment
+                                    </div>
+                                </div>
+                                <!-- child 2 comment -->
+                                <div class="flex mt-4">
+                                    <div class="flex-shrink-0"><img src="" alt="" class="rounded-circle"></div>
+                                    <div class="ms-3">
+                                        <div class="fw-bold">Commenter name</div>
+                                        If you gping to lead the space frontair ,it has to be goverment
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- singale comment -->
+                        <div class="d-flex">
+                            <div class="flex-shrink-0"><img src="" alt="" class="rounded-circle"></div>
+                            <div class="ms-3">
+                                <div class="fw-bold">Commenter name</div>
+                                If you gping to lead the space frontair ,it has to be goverment
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- side wigets -->
+        <div class="col-lg-4">
+            <br><br><br>
+            <!-- search wigets -->
+            <h2>Recent Post</h2>
+            {% for post in posts %}
+            <div class="card" style="width: 18rem;">
+                <img src="{{post.image.url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{post.title}}</h5>
+                    <p class="card-text">{{post.body|safe|truncatechars:200 }}</p>
+                    <a href="{% url 'detail' post.slug %}" class="btn btn-primary">View Post</a>
+                </div>
+            </div>
+            <br>
+            {% endfor%}
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+<!-- <div class="card mb-4"> -->
+<!-- <div class="card-header">Seach</div>
+                <div class="card-body">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Enter seach term..."
+                            aria-label="Enter search">
+                        <button class="btn btn-primary" id="button-search" type="button">Go!</button>
+                    </div>
+                </div> -->
+<!-- </div> -->
+<!-- categories widget -->
+<!-- <div class="card mb-4"> -->
+<!-- <div class="card-header">categories</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="#!">Web design</a></li>
+                                <li><a href="#!">Web design</a></li>
+                                <li><a href="#!">Web design</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="#!">Web design</a></li>
+                                <li><a href="#!">Web design</a></li>
+                                <li><a href="#!">Web design</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> -->
+<!-- </div> -->
+<!-- side widget -->
+<!-- <div class="card mb-4"> -->
+<!-- <div class="card-header">side widget</div>
+                <div class="card-body">You can put anything you want</div> -->
+<!-- </div> -->

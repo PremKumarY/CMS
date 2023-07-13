@@ -1,0 +1,75 @@
+{% comment %} {% extends 'cmsapp/base.html' %} {% endcomment %}
+{% block content %}
+{% load static %}
+
+<body>
+    <link rel="stylesheet" type="text/css" href="{% static 'cmsapp/css/style.css'%}">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+
+    <img class="wave" src="{% static 'cmsapp/img/wave.png'%}">
+    <div class="container">
+        <div class="img">
+            <img src="{% static 'cmsapp/img/bg.svg'%}">
+        </div>
+        <div class="login-content">
+
+            <form action="" method="post">
+                {% csrf_token %}
+
+                <img src="{% static 'cmsapp/img/avatar.svg'%}">
+                <h2 class="title">Welcome</h2>
+
+                <div class="input-div one">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="div">
+                        <label for="Username"></label>
+                        <input type="text" class="input" placeholder="Username" name="username" id="username">
+                    </div>
+                </div>
+
+                <div class="input-div one">
+                    <div class="i">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="div">
+                        <label for="Email"></label>
+                        <input type="text" class="input" placeholder="email" name="email" id="email">
+                    </div>
+                </div>
+
+                <div class="input-div pass">
+                    <div class="i">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="div">
+                        <label for="Password"></label>
+                        <input type="text" class="input" placeholder="Password" name="password1" id="password1">
+
+                    </div>
+                </div>
+                <div class="input-div pass">
+                    <div class="i">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="div">
+                        <label for="Password"></label>
+                        <input type="text" class="input" placeholder="Password Again" name="password2" id="password2">
+
+                    </div>
+                </div>
+                <p>If you have account..
+                    <a href="{% url 'login'%}"> Login</a>
+                </p>
+
+                <input type="submit" class="btn" value="Submit">
+            </form>
+        </div>
+    </div>
+    <!-- <script type="text/javascript" src="js/main.js"></script> -->
+</body>
+
+</html>
+{% endblock %}
